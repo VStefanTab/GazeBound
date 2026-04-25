@@ -120,6 +120,16 @@
 -define:TEXTCORE_FONT_ENGINE_1_5_OR_NEWER
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
+-r:"Assets/g.tec/Unity Interface/Editor/Gtec.UnityInterface.Editor.dll"
+-r:"Assets/g.tec/Unity Interface/Plugins/GDSClientAPIDotNet.dll"
+-r:"Assets/g.tec/Unity Interface/Plugins/Gtec.Chain.Android.Unity.Devices.Unicorn.dll"
+-r:"Assets/g.tec/Unity Interface/Plugins/Gtec.Chain.Common.dll"
+-r:"Assets/g.tec/Unity Interface/Plugins/Gtec.Chain.Mac.Devices.Unicorn.dll"
+-r:"Assets/g.tec/Unity Interface/Plugins/Gtec.Chain.Windows.Devices.GDS.dll"
+-r:"Assets/g.tec/Unity Interface/Plugins/Gtec.Chain.Windows.Devices.Unicorn.dll"
+-r:"Assets/g.tec/Unity Interface/Plugins/Gtec.Licensing.Unicorn.DotNet.dll"
+-r:"Assets/g.tec/Unity Interface/Plugins/Gtec.UnityInterface.dll"
+-r:"Assets/g.tec/Unity Interface/Plugins/UnicornDotNet.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.62f3/Editor/Data/Managed/UnityEditor.Graphs.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.62f3/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2022.3.62f3/Editor/Data/Managed/UnityEngine/UnityEditor.DeviceSimulatorModule.dll"
