@@ -81,7 +81,7 @@ public class CharController_Motor : MonoBehaviour {
 		rotY = Input.GetAxis ("Mouse Y") * sensitivity;
 
 		CheckForWaterHeight();
-		CheckDistanceMusic();          // <-- added here
+		CheckDistanceMusic();
 
 		Vector3 movement = new Vector3 (moveFB, gravity, moveLR);
 

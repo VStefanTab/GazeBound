@@ -9,7 +9,7 @@ public class JumpscareManager : MonoBehaviour {
 
     public GameObject jumpscareImage;
     public GameObject blackScreen;
-    public AudioClip jumpscareSound;
+    public AudioSource jumpscareSound;
     public float scareDuration = 1.5f;
 
     private AudioSource _audio;
@@ -20,7 +20,7 @@ public class JumpscareManager : MonoBehaviour {
     }
 
     void Update(){
-        if (_triggered) return;
+        if (_triggered) Application.Quit();
 
         float dist = Vector3.Distance(player.position, transform.position);
 
@@ -33,7 +33,7 @@ public class JumpscareManager : MonoBehaviour {
         _triggered = true;
 
         jumpscareImage.SetActive(true);
-        _audio.PlayOneShot(jumpscareSound);
+        _audio.PlayOneShot(jumpscareSound.clip);
 
         yield return new WaitForSeconds(scareDuration);
 
