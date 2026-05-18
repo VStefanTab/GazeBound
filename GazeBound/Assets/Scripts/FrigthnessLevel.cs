@@ -2,33 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; // Remove this if you're not using TextMeshPro
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class FrightnessUI : MonoBehaviour
 {
+    public GameObject gameOverImage;
     [Header("References")]
     public Frightness frightnessScript;
 
     [Header("UI Elements")]
-    public Slider frightnessSlider;
-    public TextMeshProUGUI frightnessText; // Or use "public Text frightnessText;" for legacy UI
+    public TextMeshProUGUI frightnessText;
 
-    void Start()
-    {
-        // Set slider range to match frightness settings
-        if (frightnessSlider != null)
-        {
-            frightnessSlider.minValue = 0f;
-            frightnessSlider.maxValue = frightnessScript.maxFrightness;
-        }
-    }
+    [Header("Game Over Settings")]
+    public string gameOverScene = "GameOver"; // Name of your Game Over scene
+
+    private bool gameEnded = false;
 
     void Update()
     {
-        if (frightnessSlider != null)
-            frightnessSlider.value = frightnessScript.frightness;
+        if (gameEnded) return;
+
+        // Non-linear increase: squaring the ratio makes low levels feel safe,
+        // but high levels escalate rapidly
+        float ratio = frightnessScript.frightness / frightnessScript.maxFrightness;
+        float nonLinearValue = Mathf.Pow(ratio, 2f) * frightnessScript.maxFrightness;
 
         if (frightnessText != null)
-            frightnessText.text = "Frightness: " + Mathf.RoundToInt(frightnessScript.frightness) + "%";
+            frightnessText.text = "Frightness: " + Mathf.RoundToInt(nonLinearValue) + "%";
+
+        if (frightnessScript.frightness >= frightnessScript.maxFrightness)
+            StartCoroutine(GameOver());
+    }
+
+    IEnumerator GameOver()
+    {
+        gameEnded = true;
+        frightnessText.text = "You were too scared...";
+        yield return new WaitForSeconds(2f);
+        gameOverImage.SetActive(true);
     }
 }
